@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>A Love Story Drawn on Graphs</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <!-- BACKGROUND -->
+
+  <div class="stars"></div>
+
+  <!-- INTRO -->
+
+  <div id="intro">
+
+    <h1 id="typing-text" style="font-weight: 300;"></h1>
+
+    <button id="begin-btn">
+      Begin
+    </button>
+
+  </div>
+
+  <!-- HEART SCENE -->
+
+  <div id="heart-scene">
+
+    <svg
+      class="heart-svg"
+      viewBox="0 0 100 100">
+
+      <path d="
+      M50 90
+      L20 60
+      C5 45 5 20 25 20
+      C40 20 50 35 50 35
+      C50 35 60 20 75 20
+      C95 20 95 45 80 60
+      Z
+      " />
+
+    </svg>
+
+    <p class="quote">
+
+      Funny how things finally started making sense after I met you.
+
+      <br><br>
+
+      Before you,
+distance was just distance.
+
+      <br><br>
+Now somehow,
+even the night sky reminds me of us.
+ </p>
+
+    <button id="next-btn">
+      Continue
+    </button>
+
+  </div>
+
+  <!-- GALAXY -->
+
+  <div id="galaxy-scene">
+
+    <svg class="constellation-lines">
+
+      <line x1="30%" y1="20%" x2="70%" y2="40%" />
+
+      <line x1="70%" y1="40%" x2="20%" y2="55%" />
+
+      <line x1="20%" y1="55%" x2="55%" y2="25%" />
+
+      <line x1="30%" y1="20%" x2="75%" y2="70%" />
+
+      <line x1="55%" y1="25%" x2="75%" y2="70%" />
+
+    </svg>
+
+    <h1 class="galaxy-title">
+      Our Playlist
+    </h1>
+    <p class="galaxy-subtitle">
+      Each song is a little story of us. (click the stars Princess) 
+    </p>
+
+    <!-- SONGS -->
+
+<div class="song-star"
+     style="top:20%; left:30%;"
+     onclick="showMessage(
+     'Tum Se Hi',
+     'You became my comfort before I even realized it.',
+     this
+     )">
+
+     <span class="hidden-initial">
+       LV
+     </span>
+
+</div>
+
+<div class="song-star"
+     style="top:40%; left:70%;"
+     onclick="showMessage(
+     'Dooriyan',
+     'Distance only proves how badly I want your presence.',
+     this
+     )">
+</div>
+
+<div class="song-star"
+     style="top:65%; left:45%;"
+     onclick="showMessage(
+     'Enchanted',
+     'I still replay the moment you became special to me.',
+     this
+     )">
+</div>
+
+<div class="song-star"
+     style="top:25%; left:55%;"
+     onclick="showMessage(
+     'You & I',
+     'No matter how far life places us, my heart still chooses you in every version of the future.',
+     this
+     )">
+</div>
+
+<div class="song-star"
+     style="top:55%; left:20%;"
+     onclick="showMessage(
+     'Saathiya',
+     'Loving you feels strangely familiar. Like my heart already knew yours.',
+     this
+     )">
+</div>
+
+
+    <div class="song-star"
+         style="top:70%; left:75%;"
+         onclick="showMessage(
+         'Tere Bina',
+         'Even normal days feel incomplete without you somewhere in them.',
+         this
+         )">
+     <span class="hidden-initial">
+       AG
+     </span>
+    </div>
+
+    <!-- MESSAGE -->
+
+    <div id="song-message">
+
+      <h2 id="song-title"></h2>
+
+      <p id="song-text"></p>
+
+    </div>
+
+    <button id="final-btn">
+      Keep Going
+    </button>
+
+  </div>
+
+  <!-- FINAL SCENE -->
+
+  <div id="final-scene">
+
+    <svg
+      class="heartbeat-svg"
+      viewBox="0 0 1000 200">
+
+      <path
+        d="
+        M0 100
+        L150 100
+        L200 40
+        L250 160
+        L300 60
+        L350 100
+        L500 100
+        L550 80
+        L600 120
+        L650 100
+        L1000 100
+        " />
+
+    </svg>
+
+    <h1 id="final-title" style="color: #f68fc8;">
+      Happy 1 Month, Princess ❤️!!
+    </h1>
+
+    <p id="final-line">
+
+      Distance is just another graph.
+
+      <br>
+
+      We’ll solve it too.
+
+    </p>
+
+    <div id="meeting-points">
+
+      <div class="point left-point"></div>
+
+      <div class="point right-point"></div>
+
+    </div>
+
+    <p id="see-you">
+      See you soon.
+    </p>
+
+    <!-- SECRET BUTTON -->
+
+    <button id="secret-btn">
+      don't click this
+    </button>
+
+    <div id="secret-message">
+
+      I know one month may sound small to the world,
+      but to me it’s 30 days of finding a person I genuinely
+      want in my life every single day.
+
+      <br><br>
+
+      Thank you for making distance feel warmer than some
+      people make presence feel.
+
+      <br><br>
+
+      I don’t think you realize how much of my day quietly
+      revolves around you now.
+
+      <br><br>
+
+      And honestly?
+
+      
+
+      That’s my favorite part.
+
+    </div>
+
+  </div>
+
+  <!-- MUSIC -->
+
+  <audio id="bg-music" loop>
+
+    <source src="music.mp3" type="audio/mpeg">
+
+  </audio>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
