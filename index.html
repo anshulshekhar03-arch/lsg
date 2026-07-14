@@ -1,277 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>A Love Story Drawn on Graphs</title>
-
+  <title>The Equation of Us</title>
   <link rel="stylesheet" href="style.css">
-
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:wght@200;300;400;500&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-  <!-- BACKGROUND -->
-
-  <div class="stars"></div>
-
-  <!-- INTRO -->
-
-  <div id="intro">
-
-    <h1 id="typing-text" style="font-weight: 300;"></h1>
-
-    <button id="begin-btn">
-      Begin
-    </button>
-
-  </div>
-
-  <!-- HEART SCENE -->
-
-  <div id="heart-scene">
-
-    <svg
-      class="heart-svg"
-      viewBox="0 0 100 100">
-
-      <path d="
-      M50 90
-      L20 60
-      C5 45 5 20 25 20
-      C40 20 50 35 50 35
-      C50 35 60 20 75 20
-      C95 20 95 45 80 60
-      Z
-      " />
-
-    </svg>
-
-    <p class="quote">
-
-      Funny how things finally started making sense after I met you.
-
-      <br><br>
-
-      Before you,
-distance was just distance.
-
-      <br><br>
-Now somehow,
-even the night sky reminds me of us.
- </p>
-
-    <button id="next-btn">
-      Continue
-    </button>
-
-  </div>
-
-  <!-- GALAXY -->
-
-  <div id="galaxy-scene">
-
-    <svg class="constellation-lines">
-
-      <line x1="30%" y1="20%" x2="70%" y2="40%" />
-
-      <line x1="70%" y1="40%" x2="20%" y2="55%" />
-
-      <line x1="20%" y1="55%" x2="55%" y2="25%" />
-
-      <line x1="30%" y1="20%" x2="75%" y2="70%" />
-
-      <line x1="55%" y1="25%" x2="75%" y2="70%" />
-
-    </svg>
-
-    <h1 class="galaxy-title">
-      Our Playlist
-    </h1>
-    <p class="galaxy-subtitle">
-      Each song is a little story of us. (click the stars Princess) 
-    </p>
-
-    <!-- SONGS -->
-
-<div class="song-star"
-     style="top:20%; left:30%;"
-     onclick="showMessage(
-     'Tum Se Hi',
-     'You became my comfort before I even realized it.',
-     this
-     )">
-
-     <span class="hidden-initial">
-       LV
-     </span>
-
-</div>
-
-<div class="song-star"
-     style="top:40%; left:70%;"
-     onclick="showMessage(
-     'Dooriyan',
-     'Distance only proves how badly I want your presence.',
-     this
-     )">
-</div>
-
-<div class="song-star"
-     style="top:65%; left:45%;"
-     onclick="showMessage(
-     'Enchanted',
-     'I still replay the moment you became special to me.',
-     this
-     )">
-</div>
-
-<div class="song-star"
-     style="top:25%; left:55%;"
-     onclick="showMessage(
-     'You & I',
-     'No matter how far life places us, my heart still chooses you in every version of the future.',
-     this
-     )">
-</div>
-
-<div class="song-star"
-     style="top:55%; left:20%;"
-     onclick="showMessage(
-     'Saathiya',
-     'Loving you feels strangely familiar. Like my heart already knew yours.',
-     this
-     )">
-</div>
-
-
-    <div class="song-star"
-         style="top:70%; left:75%;"
-         onclick="showMessage(
-         'Tere Bina',
-         'Even normal days feel incomplete without you somewhere in them.',
-         this
-         )">
-     <span class="hidden-initial">
-       AG
-     </span>
-    </div>
-
-    <!-- MESSAGE -->
-
-    <div id="song-message">
-
-      <h2 id="song-title"></h2>
-
-      <p id="song-text"></p>
-
-    </div>
-
-    <button id="final-btn">
-      Keep Going
-    </button>
-
-  </div>
-
-  <!-- FINAL SCENE -->
-
-  <div id="final-scene">
-
-    <svg
-      class="heartbeat-svg"
-      viewBox="0 0 1000 200">
-
-      <path
-        d="
-        M0 100
-        L150 100
-        L200 40
-        L250 160
-        L300 60
-        L350 100
-        L500 100
-        L550 80
-        L600 120
-        L650 100
-        L1000 100
-        " />
-
-    </svg>
-
-    <h1 id="final-title" style="color: #f68fc8;">
-      Happy 1 Month, Princess ❤️!!
-    </h1>
-
-    <p id="final-line">
-
-      Distance is just another graph.
-
-      <br>
-
-      We’ll solve it too.
-
-    </p>
-
-    <div id="meeting-points">
-
-      <div class="point left-point"></div>
-
-      <div class="point right-point"></div>
-
-    </div>
-
-    <p id="see-you">
-      See you soon, My "Dilliwali" Girlfriend 🥹.
-    </p>
-
-    <!-- SECRET BUTTON -->
-
-    <button id="secret-btn">
-      don't click this
-    </button>
-
-    <div id="secret-message">
-
-      I know one month may sound small to the world,
-      but to me it’s 30 days of finding a person I genuinely
-      want in my life every single day.
-
-      <br><br>
-
-      Thank you for making distance feel warmer than some
-      people make presence feel.
-
-      <br><br>
-
-      I don’t think you realize how much of my day quietly
-      revolves around you now.
-
-      <br><br>
-
-      And honestly?
-
-      
-
-      That’s my favorite part.
-
-    </div>
-
-  </div>
-
-  <!-- MUSIC -->
-
+  <!-- Audio Player (Hidden) -->
   <audio id="bg-music" loop>
-
     <source src="music.mp3" type="audio/mpeg">
-
   </audio>
 
+  <!-- Ambient Dynamic Background -->
+  <div id="ambient-bg"></div>
+
+  <!-- Audio Visualizer Bars (Bottom Corner) -->
+  <div id="audio-visualizer" class="hidden">
+    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+  </div>
+
+  <!-- GATEWAY -->
+  <div id="gateway">
+    <button id="start-btn" class="glass-button">Initialize</button>
+  </div>
+
+  <!-- MAIN SCROLLING CONTENT -->
+  <main id="main-content" class="hidden">
+    
+    <!-- SECTION 1: The Intro -->
+    <section class="hero-section">
+      <h3 class="pre-title">For my Dilliwali Girlfriend</h3>
+      <svg class="calligraphy-svg" viewBox="0 0 800 200">
+        <text x="50%" y="60%" text-anchor="middle" class="calligraphy-text">Three Months</text>
+      </svg>
+      <p class="scroll-hint">Scroll down to trace our timeline</p>
+      <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- SECTION 2: The Vertical Graph Timeline -->
+    <section class="timeline-section">
+      <div class="timeline-line" id="t-line"></div>
+
+      <div class="timeline-item left">
+        <div class="timeline-dot"></div>
+        <div class="glass-card content-card">
+          <h4>June 29 - July 25, 2025</h4>
+          <h3>The Beautiful Collision</h3>
+          <p>Found someone so special, I never would have imagined it. It felt like discovering a secret the universe was keeping just for me.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item right">
+        <div class="timeline-dot"></div>
+        <div class="glass-card content-card">
+          <h4>July 30, 2025</h4>
+          <h3>The First Call</h3>
+          <p>We had just parted ways, but I heard your voice. We spoke for hours, and suddenly, the distance didn't matter at all.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item left">
+        <div class="timeline-dot"></div>
+        <div class="glass-card content-card">
+          <h4>Sept 15, 2025</h4>
+          <h3>Your Special Day</h3>
+          <p>How badly I regret NOT having been there with you.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item right">
+        <div class="timeline-dot"></div>
+        <div class="glass-card content-card">
+          <h4>Oct 3, 2025</h4>
+          <h3>Unexpected Joy</h3>
+          <p>That phone call made me SO happy—more than I could ever explain.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item left">
+        <div class="timeline-dot"></div>
+        <div class="glass-card content-card">
+          <h4>Oct 5, 2025</h4>
+          <h3>My Screen Lit Up</h3>
+          <p>The first time YOU called me (except for my birthday). Seeing your name flash on my phone gave me butterflies I hadn't felt in forever.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item right">
+        <div class="timeline-dot"></div>
+        <div class="glass-card content-card">
+          <h4>Nov 5, 2025</h4>
+          <h3>The Missed Detour</h3>
+          <p>I wish you had taken that detour to Bombay. I just really wanted to see my Crush... Soon, the detours will lead straight to us.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item left">
+        <div class="timeline-dot"></div>
+        <div class="glass-card content-card">
+          <h4>March 28, 2026</h4>
+          <h3>The Confession</h3>
+          <p>YOU OUTRIGHT SAID IT!!! My heart stopped, and then started beating so fast. I was on top of the world.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item right">
+        <div class="timeline-dot"></div>
+        <div class="glass-card content-card">
+          <h4>April 15, 2026</h4>
+          <h3>Day One</h3>
+          <p>The official start of something beautiful. The day you became mine.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: The Variables Dashboard -->
+    <section class="dashboard-section">
+      <div class="dashboard-grid">
+        <div class="glass-card stat-card">
+          <h3>Hours on the Phone</h3>
+          <h2 class="neon-text">Countless</h2>
+          <p>(and still not enough)</p>
+        </div>
+        <div class="glass-card stat-card">
+          <h3>Your detours to Bombay</h3>
+          <h2 class="neon-text">0</h2>
+          <p>(We are fixing this)</p>
+        </div>
+        <div class="glass-card stat-card">
+          <h3>Times You Made Me Smile Today</h3>
+          <h2 class="neon-text">Error:</h2>
+          <p>Integer Overflow</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: The Geography of Us -->
+    <section class="geography-section">
+      <h2 class="section-title" style="font-size: 2.8rem;">The Geography of Us</h2>
+      <p class="section-subtitle">1,400 kilometers. It sounds like a lot of variables, but it's just a line waiting to be erased.</p>
+      
+      <div class="glass-card map-card">
+        <svg class="geo-svg" viewBox="0 0 400 400">
+          
+          <polygon class="india-outline" points="
+            170,20 190,10 210,30 220,60
+            240,80 270,90 310,70 340,90 350,120
+            310,140 280,140 270,160 250,210
+            220,280 200,360 180,360 160,280
+            140,240 120,220 80,210 50,180
+            70,150 110,150 120,120 130,80
+            150,50" />
+          
+          <path class="geo-path" d="M 180,100 Q 100,160 120,220" />
+          
+          <circle cx="180" cy="100" r="4" class="geo-node pulse-delhi" /> <circle cx="120" cy="220" r="4" class="geo-node pulse-mumbai" /> <circle cx="135" cy="240" r="4" class="geo-node pulse-pune" /> </svg>
+
+        <div class="geo-labels">
+          <div class="geo-label delhi-label">
+            <h4>Delhi</h4><p>You.</p>
+          </div>
+          <div class="geo-label bombay-label">
+            <h4>Bombay</h4><p>Me.</p>
+          </div>
+          <div class="geo-label pune-label">
+            <h4>Pune</h4><p>Where it all started.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: The Soundtrack Carousel -->
+    <section class="soundtrack-section">
+      <h2 class="section-title" style="font-size: 2.4rem;">The Soundtrack of Us</h2>
+      <p class="section-subtitle">Click to play. The vinyl will spin.</p>
+      
+      <audio id="track-player" src=""></audio>
+
+      <div class="carousel-container">
+        
+        <div class="glass-card track-card" data-song="song1.mp3">
+          <svg class="vinyl-icon" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="none" stroke="var(--text-light)" stroke-width="1" stroke-dasharray="4 4" />
+            <circle cx="50" cy="50" r="20" fill="none" stroke="var(--accent-magenta)" stroke-width="2" />
+            <circle cx="50" cy="50" r="5" fill="var(--accent-gold)" />
+          </svg>
+          <h4>What Makes You Beautiful</h4>
+          <p>The song that describes you, as you are in my eyes.</p>
+          <div class="play-indicator">▶ Play</div>
+        </div>
+
+        <div class="glass-card track-card" data-song="song2.mp3">
+          <svg class="vinyl-icon" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="none" stroke="var(--text-light)" stroke-width="1" stroke-dasharray="4 4" />
+            <circle cx="50" cy="50" r="20" fill="none" stroke="var(--accent-magenta)" stroke-width="2" />
+            <circle cx="50" cy="50" r="5" fill="var(--accent-gold)" />
+          </svg>
+          <h4>Tum Se Hi</h4>
+          <p>The track that instantly reminds me of you, no matter where I am.</p>
+          <div class="play-indicator">▶ Play</div>
+        </div>
+
+        <div class="glass-card track-card" data-song="song3.mp3">
+          <svg class="vinyl-icon" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="none" stroke="var(--text-light)" stroke-width="1" stroke-dasharray="4 4" />
+            <circle cx="50" cy="50" r="20" fill="none" stroke="var(--accent-magenta)" stroke-width="2" />
+            <circle cx="50" cy="50" r="5" fill="var(--accent-gold)" />
+          </svg>
+          <h4>Saathiya</h4>
+          <p>The song I want playing when you finally take that detour.</p>
+          <div class="play-indicator">▶ Play</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 6: Future Projections -->
+    <section class="projections-section">
+      <h2 class="section-title" style="font-size: 2.4rem;">Future Projections</h2>
+      <p class="section-subtitle">Month 03 is just the baseline...</p>
+      
+      <div class="chart-container">
+        <svg class="chart-svg" viewBox="0 0 500 200" preserveAspectRatio="none">
+          <!-- Area Gradient Definition -->
+          <defs>
+            <linearGradient id="chart-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255, 0, 127, 0.6)" />
+              <stop offset="100%" stop-color="rgba(255, 0, 127, 0)" />
+            </linearGradient>
+          </defs>
+          <!-- The sweeping upward curve -->
+          <path class="area-path" d="M 0,200 L 0,180 Q 150,180 250,100 T 500,10 L 500,200 Z" fill="url(#chart-grad)" />
+          <path class="line-path" d="M 0,180 Q 150,180 250,100 T 500,10" fill="none" stroke="var(--accent-magenta)" stroke-width="4" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- SECTION 7: The Constants -->
+    <section class="constants-section">
+      <h2 class="section-title">The Constants in My Equation</h2>
+      <p class="section-subtitle">No matter how the variables change, these things remain true.</p>
+      <div class="glass-grid">
+        <div class="glass-pill">Your laugh</div>
+        <div class="glass-pill">The way you say my name</div>
+        <div class="glass-pill">Our late night talks</div>
+        <div class="glass-pill">Your patience with me</div>
+        <div class="glass-pill">The comfort of your voice</div>
+        <div class="glass-pill">How fast 3 months flew by</div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: The Tactile Finale -->
+    <section class="finale-section">
+      <div id="tactile-box">
+        <p id="hold-prompt">Press and hold</p>
+        <div id="hold-ring"></div>
+      </div>
+
+      <div id="heartbeat-container" class="hidden">
+        <svg class="heartbeat-svg" viewBox="0 0 1000 200">
+          <path d="M0 100 L250 100 L280 40 L310 160 L350 60 L380 100 L600 100 L630 80 L660 120 L700 100 L1000 100" />
+        </svg>
+        <p id="final-message">Happy 3 Months, Princess.<br><span>Distance was just a graph. We solved it together.</span></p>
+        
+        <div class="glass-card final-note">
+          <p>I know a few months might sound small to the rest of the world, but to me, it’s been 90 days of finding a person I genuinely want in my life every single day.</p>
+          <p>Thank you for making distance feel warmer than some people make presence feel. I don’t think you realize how much of my day quietly revolves around you now... and that's my favorite part.</p>
+          <p style="text-align: right; margin-top: 15px; color: var(--accent-gold);">— Yours.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <script src="script.js"></script>
-
 </body>
-
 </html>
