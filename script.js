@@ -1,161 +1,246 @@
-const text = "Plotting distance...";
-const typingText = document.getElementById("typing-text");
 
-const beginBtn = document.getElementById("begin-btn");
 
-const music = document.getElementById("bg-music");
 
-const heartScene = document.getElementById("heart-scene");
+// --- ELEMENTS ---
+const gateway = document.getElementById('gateway');
+const startBtn = document.getElementById('start-btn');
+const mainContent = document.getElementById('main-content');
+const music = document.getElementById('bg-music');
+const visualizer = document.getElementById('audio-visualizer');
 
-const intro = document.getElementById("intro");
-
-const nextBtn = document.getElementById("next-btn");
-
-const galaxyScene = document.getElementById("galaxy-scene");
-
-const finalBtn = document.getElementById("final-btn");
-
-const finalScene = document.getElementById("final-scene");
-
-const secretBtn = document.getElementById("secret-btn");
-
-const secretMessage = document.getElementById("secret-message");
-
-let index = 0;
-
-/* TYPING */
-
-function typeLetter() {
-
-  if(index < text.length) {
-
-    typingText.innerHTML += text.charAt(index);
-
-    index++;
-
-    setTimeout(typeLetter, 100);
-
-  } else {
-
-    beginBtn.style.opacity = 1;
-  }
-}
-
-typeLetter();
-
-/* BEGIN */
-
-beginBtn.addEventListener("click", () => {
-
-  music.volume = 0.2;
-
+// --- GATEWAY & AUDIO ---
+startBtn.addEventListener('click', () => {
+  gateway.style.opacity = '0';
+  
+  // Start Music
+  music.volume = 0;
   music.play();
-
-  intro.style.transition = "opacity 2s";
-
-  intro.style.opacity = 0;
+  let vol = 0;
+  let fade = setInterval(() => {
+    if (vol < 0.3) { vol += 0.02; music.volume = vol; }
+    else clearInterval(fade);
+  }, 100);
 
   setTimeout(() => {
-
-    intro.style.display = "none";
-
-    heartScene.style.display = "flex";
-
+    gateway.style.display = 'none';
+    mainContent.classList.remove('hidden');
+    document.querySelector('.calligraphy-text').classList.add('draw-text');
+    visualizer.classList.add('show');
   }, 2000);
 });
 
-/* HEART -> GALAXY */
+// --- SCROLL TIMELINE GRAPH LOGIC ---
+const timelineLine = document.getElementById('t-line');
+const timelineSection = document.querySelector('.timeline-section');
 
-nextBtn.addEventListener("click", () => {
+window.addEventListener('scroll', () => {
+  const sectionTop = timelineSection.offsetTop;
+  const sectionHeight = timelineSection.offsetHeight;
+  const scrollY = window.scrollY;
+  const windowHeight = window.innerHeight;
 
-  heartScene.style.opacity = 0;
-
-  setTimeout(() => {
-
-    heartScene.style.display = "none";
-
-    galaxyScene.style.display = "block";
-
-  }, 1000);
-});
-
-/* GALAXY -> FINAL */
-
-finalBtn.addEventListener("click", () => {
-
-  galaxyScene.style.opacity = 0;
-
-  setTimeout(() => {
-
-    galaxyScene.style.display = "none";
-
-    finalScene.style.display = "flex";
-
-  }, 1000);
-});
-
-/* SONG MESSAGE */
-
-// function showMessage(title, text) {
-
-//   document.getElementById("song-title").innerText = title;
-
-//   document.getElementById("song-text").innerText = text;
-
-//   document.getElementById("song-message").style.opacity = 1;
-// }
-
-let activeStar = null;
-
-function showMessage(title, text, element) {
-
-  const messageBox = document.getElementById("song-message");
-
-  // TOGGLE OFF if same star clicked again
-  if (activeStar === element && messageBox.style.opacity == 1) {
-
-    messageBox.style.opacity = 0;
-
-    activeStar = null;
-
-    return;
+  if (scrollY + windowHeight > sectionTop) {
+    let drawPercentage = ((scrollY + windowHeight - sectionTop) / (sectionHeight)) * 100;
+    drawPercentage = Math.min(Math.max(drawPercentage, 0), 100);
+    timelineLine.style.height = `${drawPercentage}%`;
   }
+});
 
-  activeStar = element;
+// --- INTERSECTION OBSERVERS ---
+const observerOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.2
+};
 
-  document.getElementById("song-title").innerText = title;
+// 1. Timeline Cards
+const timelineObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
 
-  document.getElementById("song-text").innerText = text;
+document.querySelectorAll('.timeline-item').forEach(item => {
+  timelineObserver.observe(item);
+});
 
-  // get star position
-  const rect = element.getBoundingClientRect();
+// 2. Dashboard Stats
+const statObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
 
-  // position popup near star
-  messageBox.style.left = `${rect.left - 110}px`;
+document.querySelectorAll('.stat-card').forEach((card, index) => {
+  setTimeout(() => statObserver.observe(card), index * 200);
+});
 
-  messageBox.style.top = `${rect.top + 30}px`;
+// 3. Geography Map
+const geoObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('draw-geo');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
 
-  // show popup
-  messageBox.style.opacity = 1;
-  messageBox.style.transform = "scale(1)";
+const mapCard = document.querySelector('.map-card');
+if(mapCard) geoObserver.observe(mapCard);
+
+// 4. Soundtrack Carousel
+const trackObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.track-card').forEach((card, index) => {
+  setTimeout(() => trackObserver.observe(card), index * 200);
+});
+
+// 5. Projections Chart
+const chartObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('draw-chart');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+const chartContainer = document.querySelector('.chart-container');
+if(chartContainer) chartObserver.observe(chartContainer);
+
+// 6. Constants Grid
+const gridObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const pills = entry.target.querySelectorAll('.glass-pill');
+      pills.forEach((pill, index) => {
+        setTimeout(() => {
+          pill.classList.add('visible');
+        }, index * 150);
+      });
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+const constantsSection = document.querySelector('.constants-section');
+if(constantsSection) gridObserver.observe(constantsSection);
+
+
+// --- FINALE: TACTILE PRESS & HOLD ---
+const tactileBox = document.getElementById('tactile-box');
+const holdRing = document.getElementById('hold-ring');
+const heartbeatContainer = document.getElementById('heartbeat-container');
+const heartbeatSvg = document.querySelector('.heartbeat-svg path');
+
+let holdTimer;
+let holdProgress = 0;
+
+function startHold(e) {
+  if(e.type === 'touchstart') e.preventDefault();
+  
+  let vol = music.volume;
+  let swell = setInterval(() => {
+    if(vol < 0.6) { vol += 0.05; music.volume = vol; }
+    else clearInterval(swell);
+  }, 100);
+
+  holdTimer = setInterval(() => {
+    holdProgress += 2;
+    holdRing.style.width = `${holdProgress}%`;
+    holdRing.style.height = `${holdProgress}%`;
+
+    if (holdProgress >= 100) {
+      triggerFinale();
+    }
+  }, 40);
 }
 
-galaxyScene.addEventListener("click", (e) => {
-
-  // if click is NOT on a star
-  if (!e.target.closest(".song-star")) {
-
-    document.getElementById("song-message").style.opacity = 0;
-    messageBox.style.transform = "scale(0.9)";
-
-    activeStar = null;
+function stopHold() {
+  clearInterval(holdTimer);
+  if (holdProgress < 100) {
+    holdProgress = 0;
+    holdRing.style.width = `0%`;
+    holdRing.style.height = `0%`;
+    music.volume = 0.3;
   }
+}
+
+function triggerFinale() {
+  clearInterval(holdTimer);
+  tactileBox.style.display = 'none';
+  
+  setTimeout(() => {
+    heartbeatContainer.classList.remove('hidden');
+    heartbeatSvg.classList.add('draw-beat');
+  }, 500);
+}
+
+tactileBox.addEventListener('mousedown', startHold);
+tactileBox.addEventListener('mouseup', stopHold);
+tactileBox.addEventListener('mouseleave', stopHold);
+tactileBox.addEventListener('touchstart', startHold);
+tactileBox.addEventListener('touchend', stopHold);
+
+// --- SOUNDTRACK INTERACTIVITY ---
+const trackCards = document.querySelectorAll('.track-card');
+const trackPlayer = document.getElementById('track-player');
+let currentPlayingCard = null;
+
+trackCards.forEach(card => {
+  card.addEventListener('click', () => {
+    const songSrc = card.getAttribute('data-song');
+    const indicator = card.querySelector('.play-indicator');
+
+    // 1. If clicking the currently playing song -> Pause it
+    if (currentPlayingCard === card && !trackPlayer.paused) {
+      trackPlayer.pause();
+      card.classList.remove('playing');
+      indicator.innerHTML = "▶ PLAY"; // Switched back to Play
+      
+      // Resume the main background music softly
+      music.play();
+      return;
+    }
+
+    // 2. Reset all cards visually
+    trackCards.forEach(c => {
+      c.classList.remove('playing');
+      c.querySelector('.play-indicator').innerHTML = "▶ PLAY";
+    });
+
+    // 3. Pause main background music
+    music.pause();
+
+    // 4. Play the selected track
+    trackPlayer.src = songSrc;
+    trackPlayer.play();
+    
+    // 5. Update UI for the active card
+    card.classList.add('playing');
+    indicator.innerHTML = "⏸ PAUSE"; // Clearly indicates they can pause it
+    currentPlayingCard = card;
+  });
 });
 
-/* SECRET MESSAGE */
-
-secretBtn.addEventListener("click", () => {
-
-  secretMessage.style.display = "block";
-
+// 6. When the track ends naturally, revert to main bg music
+trackPlayer.addEventListener('ended', () => {
+  if (currentPlayingCard) {
+    currentPlayingCard.classList.remove('playing');
+    currentPlayingCard.querySelector('.play-indicator').innerHTML = "▶ PLAY";
+  }
+  music.play();
 });
