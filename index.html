@@ -3,260 +3,431 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Equation of Us</title>
+  <title>The Equation of Us — Chapter II</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:wght@200;300;400;500&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@200;300;400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Audio Player (Hidden) -->
+  <!-- Ambient Audio Elements -->
   <audio id="bg-music" loop>
     <source src="music.mp3" type="audio/mpeg">
   </audio>
+  <audio id="track-player" src=""></audio>
 
-  <!-- Ambient Dynamic Background -->
-  <div id="ambient-bg"></div>
+  <!-- Interactive Atmosphere -->
+  <canvas id="ambient-canvas"></canvas>
+  <div class="cursor-glow" id="cursor-glow"></div>
 
-  <!-- Audio Visualizer Bars (Bottom Corner) -->
-  <div id="audio-visualizer" class="hidden">
-    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+  <!-- Audio Equalizer Floating Pill -->
+  <div id="audio-pill" class="audio-pill hidden">
+    <div class="equalizer">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <span class="pill-track-name" id="pill-title">Main Score</span>
+    <button id="pill-toggle-btn" class="pill-play-btn">⏸</button>
   </div>
 
-  <!-- GATEWAY -->
+  <!-- 1. GATEWAY SCREEN -->
   <div id="gateway">
-    <button id="start-btn" class="glass-button">Initialize</button>
+    <div class="gateway-card">
+      <span class="badge">CHAPTER II &bull; CONVERGENCE</span>
+      <h1 class="gateway-title">The Equation of Us</h1>
+      <p class="gateway-sub">When distance stopped being an obstacle and became our history.</p>
+      <button id="start-btn" class="btn-primary">Initialize Experience</button>
+    </div>
   </div>
 
-  <!-- MAIN SCROLLING CONTENT -->
+  <!-- MAIN SCROLLING EXPERIENCE -->
   <main id="main-content" class="hidden">
-    
-    <!-- SECTION 1: The Intro -->
+
+    <!-- 2. HERO SECTION -->
     <section class="hero-section">
-      <h3 class="pre-title">For my Dilliwali Girlfriend</h3>
-      <svg class="calligraphy-svg" viewBox="0 0 800 200">
-        <text x="50%" y="60%" text-anchor="middle" class="calligraphy-text">Three Months</text>
-      </svg>
-      <p class="scroll-hint">Scroll down to trace our timeline</p>
-      <div class="scroll-indicator"></div>
-    </section>
-
-    <!-- SECTION 2: The Vertical Graph Timeline -->
-    <section class="timeline-section">
-      <div class="timeline-line" id="t-line"></div>
-
-      <div class="timeline-item left">
-        <div class="timeline-dot"></div>
-        <div class="glass-card content-card">
-          <h4>June 29 - July 25, 2025</h4>
-          <h3>The Beautiful Collision</h3>
-          <p>Found someone so special, I never would have imagined it. It felt like discovering a secret the universe was keeping just for me.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item right">
-        <div class="timeline-dot"></div>
-        <div class="glass-card content-card">
-          <h4>July 30, 2025</h4>
-          <h3>The First Call</h3>
-          <p>We had just parted ways, but I heard your voice. We spoke for hours, and suddenly, the distance didn't matter at all.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item left">
-        <div class="timeline-dot"></div>
-        <div class="glass-card content-card">
-          <h4>Sept 15, 2025</h4>
-          <h3>Your Special Day</h3>
-          <p>How badly I regret NOT having been there with you.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item right">
-        <div class="timeline-dot"></div>
-        <div class="glass-card content-card">
-          <h4>Oct 3, 2025</h4>
-          <h3>Unexpected Joy</h3>
-          <p>That phone call made me SO happy—more than I could ever explain.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item left">
-        <div class="timeline-dot"></div>
-        <div class="glass-card content-card">
-          <h4>Oct 5, 2025</h4>
-          <h3>My Screen Lit Up</h3>
-          <p>The first time YOU called me (except for my birthday). Seeing your name flash on my phone gave me butterflies I hadn't felt in forever.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item right">
-        <div class="timeline-dot"></div>
-        <div class="glass-card content-card">
-          <h4>Nov 5, 2025</h4>
-          <h3>The Missed Detour</h3>
-          <p>I wish you had taken that detour to Bombay. I just really wanted to see my Crush... Soon, the detours will lead straight to us.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item left">
-        <div class="timeline-dot"></div>
-        <div class="glass-card content-card">
-          <h4>March 28, 2026</h4>
-          <h3>The Confession</h3>
-          <p>YOU OUTRIGHT SAID IT!!! My heart stopped, and then started beating so fast. I was on top of the world.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item right">
-        <div class="timeline-dot"></div>
-        <div class="glass-card content-card">
-          <h4>April 15, 2026</h4>
-          <h3>Day One</h3>
-          <p>The official start of something beautiful. The day you became mine.</p>
+      <div class="hero-content">
+        <span class="eyebrow">Six Months &bull; 180 Days Together</span>
+        <h1 class="calligraphy-title">Convergence</h1>
+        <p class="hero-quote">
+          "Distance was just a variable. The constant was always you."
+        </p>
+        <div class="scroll-badge">
+          <span>Scroll to traverse</span>
+          <div class="scroll-chevron"></div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 3: The Variables Dashboard -->
-    <section class="dashboard-section">
-      <div class="dashboard-grid">
-        <div class="glass-card stat-card">
-          <h3>Hours on the Phone</h3>
-          <h2 class="neon-text">Countless</h2>
-          <p>(and still not enough)</p>
-        </div>
-        <div class="glass-card stat-card">
-          <h3>Your detours to Bombay</h3>
-          <h2 class="neon-text">0</h2>
-          <p>(We are fixing this)</p>
-        </div>
-        <div class="glass-card stat-card">
-          <h3>Times You Made Me Smile Today</h3>
-          <h2 class="neon-text">Error:</h2>
-          <p>Integer Overflow</p>
-        </div>
+    <!-- 3. THE REVISED TIMELINE (Longing to Presence) -->
+    <section class="section-container">
+      <div class="section-header">
+        <span class="section-tag">THE TRAJECTORY</span>
+        <h2 class="section-title">From Vectors to Shared Space</h2>
       </div>
-    </section>
 
-    <!-- SECTION 4: The Geography of Us -->
-    <section class="geography-section">
-      <h2 class="section-title" style="font-size: 2.8rem;">The Geography of Us</h2>
-      <p class="section-subtitle">1,400 kilometers. It sounds like a lot of variables, but it's just a line waiting to be erased.</p>
-      
-      <div class="glass-card map-card">
-        <svg class="geo-svg" viewBox="0 0 400 400">
-          
-          <polygon class="india-outline" points="
-            170,20 190,10 210,30 220,60
-            240,80 270,90 310,70 340,90 350,120
-            310,140 280,140 270,160 250,210
-            220,280 200,360 180,360 160,280
-            140,240 120,220 80,210 50,180
-            70,150 110,150 120,120 130,80
-            150,50" />
-          
-          <path class="geo-path" d="M 180,100 Q 100,160 120,220" />
-          
-          <circle cx="180" cy="100" r="4" class="geo-node pulse-delhi" /> <circle cx="120" cy="220" r="4" class="geo-node pulse-mumbai" /> <circle cx="135" cy="240" r="4" class="geo-node pulse-pune" /> </svg>
+      <div class="timeline-container">
+        <div class="timeline-progress-bar" id="t-line"></div>
 
-        <div class="geo-labels">
-          <div class="geo-label delhi-label">
-            <h4>Delhi</h4><p>You.</p>
+        <div class="timeline-entry left">
+          <div class="timeline-marker"></div>
+          <div class="glass-card timeline-card">
+            <span class="timeline-date">July 2025 &bull; Pune</span>
+            <h3>The Origin Coordinate</h3>
+            <p>Where two completely distinct trajectories crossed for the very first time. No script, no expectations—just the quiet beginning of everything.</p>
           </div>
-          <div class="geo-label bombay-label">
-            <h4>Bombay</h4><p>Me.</p>
+        </div>
+
+        <div class="timeline-entry right">
+          <div class="timeline-marker"></div>
+          <div class="glass-card timeline-card">
+            <span class="timeline-date">April 15, 2026</span>
+            <h3>Day One</h3>
+            <p>1,400 kilometers between Bombay and Delhi. We decided that no matter the physical gap, you were my person.</p>
           </div>
-          <div class="geo-label pune-label">
-            <h4>Pune</h4><p>Where it all started.</p>
+        </div>
+
+        <div class="timeline-entry left">
+          <div class="timeline-marker"></div>
+          <div class="glass-card timeline-card">
+            <span class="timeline-date">Month 03</span>
+            <h3>The Longing Phase</h3>
+            <p>Hours through cold phone screens, countdown timers, wishing you took that detour, and wondering when we'd share the same air.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry right highlight-entry">
+          <div class="timeline-marker pulse-gold"></div>
+          <div class="glass-card timeline-card highlight-card">
+            <span class="timeline-date highlight-tag">The Turning Point</span>
+            <h3>The 1,400 km Collapse</h3>
+            <p>You came here. The screens turned off. Waking up to you, hearing your actual laugh instead of a phone speaker, and realizing our lives fit together seamlessly.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry left">
+          <div class="timeline-marker"></div>
+          <div class="glass-card timeline-card">
+            <span class="timeline-date">October 15, 2026</span>
+            <h3>Half a Year</h3>
+            <p>Not just surviving distance, but building a life through the ordinary, joyful domesticity of each day.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 5: The Soundtrack Carousel -->
-    <section class="soundtrack-section">
-      <h2 class="section-title" style="font-size: 2.4rem;">The Soundtrack of Us</h2>
-      <p class="section-subtitle">Click to play. The vinyl will spin.</p>
-      
-      <audio id="track-player" src=""></audio>
+    <!-- 4. THE ARCHITECTURE OF CARE (BENTO GRID) -->
+    <section class="section-container">
+      <div class="section-header">
+        <span class="section-tag">DOMESTIC VARIABLES</span>
+        <h2 class="section-title">The Everyday Art of You</h2>
+        <p class="section-desc">Because the real magic isn’t just grand gestures—it's how we spend our ordinary hours.</p>
+      </div>
+      <div class="bento-grid">
+        <!-- Bento 1: Cooking Disasters (Span 2) -->
+        <div class="glass-card bento-item bento-large">
+          <div class="bento-top">
+            <span class="bento-icon">🍳</span>
+            <span class="bento-stat">50% Your Fault</span>
+          </div>
+          <h3>Questionable Culinary Experiments</h3>
+          <p>The late dinners that were technically edible, recipes we completely improvised, and the mutual agreement that whatever came out of that pan counted as gourmet cuisine.</p>
+          <div class="bento-footer">
+            <span class="interactive-tag">Rating: 10/10 Companionship</span>
+          </div>
+        </div>
 
-      <div class="carousel-container">
+        <!-- Bento 2: Distance Solved (Span 1) -->
+        <div class="glass-card bento-item">
+          <div class="bento-top">
+            <span class="bento-icon">📍</span>
+            <span class="bento-stat text-gold">0 km</span>
+          </div>
+          <h3>Physical Gap</h3>
+          <p>From 1,400 km of waiting to simply rolling over and pulling you closer.</p>
+        </div>
+
+        <!-- Bento 3: Midnight Ice Cream (Span 1) -->
+        <div class="glass-card bento-item">
+          <div class="bento-top">
+            <span class="bento-icon">🍨</span>
+            <span class="bento-stat text-magenta">&infin;</span>
+          </div>
+          <h3>Midnight Ice Cream Runs</h3>
+          <p>Stealing spoonfuls at ungodly hours when the rest of the world is asleep.</p>
+        </div>
+
+        <!-- Bento 4: NEW GAP-FILLER CARD (Span 2) -->
+        <div class="glass-card bento-item bento-large">
+          <div class="bento-top">
+            <span class="bento-icon">🌙</span>
+            <span class="bento-stat text-gold">Quiet Hours</span>
+          </div>
+          <h3>Seeing You Sleepy & At Peace</h3>
+          <p>The quiet moments when the banter fades, you’re completely exhausted and comfortable, and I get to make sure you're tucked in warm. Pure, uninterrupted serenity.</p>
+          <div class="bento-footer">
+            <span class="interactive-tag">Favorite View: You, undisturbed</span>
+          </div>
+        </div>
+
+        <!-- Bento 5: The Caretaker Mode (Span 3) -->
+        <div class="glass-card bento-item bento-wide">
+          <div class="bento-top">
+            <span class="bento-icon">🕊️</span>
+            <span class="bento-stat">Non-Negotiable</span>
+          </div>
+          <h3>Taking Care of You</h3>
+          <p>Making sure you've eaten, checking if you're warm, holding you when sleep overtakes you, and finding joy in making your world just a little easier every single day.</p>
+        </div>
+      </div>
+
+    </section>
+
+        <!-- NEW SECTION A: LIVE DURATION ENGINE -->
+        <section class="section-container" style="padding-top: 20px; padding-bottom: 40px;">
+          <div class="glass-card live-counter-card">
+            <span class="section-tag">CONTINUOUS RUNTIME</span>
+            <h3 class="counter-heading">Time in Shared Orbit</h3>
+            
+            <div class="counter-grid">
+              <div class="counter-unit">
+                <span class="counter-number" id="count-days">00</span>
+                <span class="counter-label">Days</span>
+              </div>
+              <div class="counter-sep">:</div>
+              <div class="counter-unit">
+                <span class="counter-number" id="count-hours">00</span>
+                <span class="counter-label">Hours</span>
+              </div>
+              <div class="counter-sep">:</div>
+              <div class="counter-unit">
+                <span class="counter-number" id="count-minutes">00</span>
+                <span class="counter-label">Minutes</span>
+              </div>
+              <div class="counter-sep">:</div>
+              <div class="counter-unit">
+                <span class="counter-number" id="count-seconds">00</span>
+                <span class="counter-label">Seconds</span>
+              </div>
+            </div>
+            <p class="counter-footnote">Clock initialized April 15, 2026 &bull; Running continuously with zero reset.</p>
+          </div>
+        </section>
+    
+        <!-- NEW SECTION B: THE LITTLE CONSTANTS CLOUD -->
+        <section class="section-container">
+          <div class="section-header">
+            <span class="section-tag">UNFILTERED TRUTHS</span>
+            <h2 class="section-title">The Small Details</h2>
+            <p class="section-desc">Click any memory capsule to unfold why it matters.</p>
+          </div>
+    
+          <div class="capsule-grid">
+            <div class="glass-pill capsule" data-detail="The way your voice sounds before you're fully awake - soft, unfiltered, and entirely safe.">
+              <span>☕ Sleepy Morning Banter</span>
+            </div>
+            <div class="glass-pill capsule" data-detail="You asking what we should eat, rejecting 5 suggestions, and us ending up ordering food at 1 AM anyway.">
+              <span>🍕 The Dinner Dilemmas</span>
+            </div>
+            <div class="glass-pill capsule" data-detail="The realization that no matter how tired or drained I am, just hearing you breathe beside me resets everything.">
+              <span>🕊️ Your Calming Presence</span>
+            </div>
+            <div class="glass-pill capsule" data-detail="How you pretend you’re not that sleepy right before dozing off mid-conversation with your hand resting in mine.">
+              <span>💤 Mid-Sentence Sleep</span>
+            </div>
+            <div class="glass-pill capsule" data-detail="Stealing glances at you when you’re deeply focused on something and realizing I’ve never loved anyone this easily.">
+              <span>✨ Unrehearsed Joy</span>
+            </div>
+            <div class="glass-pill capsule" data-detail="Your undying desire to supervise my cooking!!">
+              <span>🔥 Kitchen Chaos Laughs</span>
+            </div>
+          </div>
+    
+          <!-- Capsule Detail Dropdown Card -->
+          <div id="capsule-modal-card" class="glass-card capsule-story hidden">
+            <p id="capsule-story-text"></p>
+          </div>
+        </section>
+    
+        <!-- NEW SECTION C: NEXT CHAPTER / FUTURE DETOURS -->
+        <section class="section-container">
+          <div class="section-header">
+            <span class="section-tag">UPCOMING PROJECTIONS</span>
+            <h2 class="section-title">Next Detours</h2>
+            <p class="section-desc">The bucket list we’re crossing off in Chapter 2.</p>
+          </div>
+    
+          <div class="bucket-grid">
+            <div class="glass-card bucket-card">
+              <div class="bucket-status checked">✔ ACCOMPLISHED</div>
+              <h4>The 1,400 km Collapse</h4>
+              <p>End the phone-only era and spend an entire uninterrupted month together.</p>
+            </div>
+    
+            <div class="glass-card bucket-card">
+              <div class="bucket-status in-progress">● IN PROGRESS</div>
+              <h4>Mastering One Recipe</h4>
+              <p>Cooking an entire multi-course dinner together without triggering a smoke alarm or blaming each other.</p>
+            </div>
+    
+            <div class="glass-card bucket-card">
+              <div class="bucket-status pending">○ UP NEXT</div>
+              <h4>The Spontaneous Road Trip</h4>
+              <p>Pack a weekend bag, cue our vinyl soundtrack, and drive with no strict itinerary.</p>
+            </div>
+    
+            <div class="glass-card bucket-card">
+              <div class="bucket-status pending">○ PERPETUAL</div>
+              <h4>Always Taking Care of You</h4>
+              <p>Holding your hand when you're anxious, making sure you eat, and celebrating every small win.</p>
+            </div>
+          </div>
+        </section>
+    
+    <!-- 5. POLAROID SCRAPBOOK (IMAGE GALLERY WITH LIGHTBOX) -->
+    <section class="section-container">
+      <div class="section-header">
+        <span class="section-tag">CAPTURED FRAMES</span>
+        <h2 class="section-title">Fragments of Us</h2>
+        <p class="section-desc">Click any memory to inspect the artifact.</p>
+      </div>
+
+      <div class="polaroid-deck">
+        <!-- Photo Item 1 -->
+        <div class="polaroid-wrapper rot-1" data-full="images/photo1.jpg" data-caption="Your smile from across. The one that stops my train of thought.">
+          <div class="polaroid-inner">
+            <div class="polaroid-photo-frame">
+              <img src="images/photo1.jpg" alt="Memory 1" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=700&q=80'">
+            </div>
+            <p class="polaroid-note">Your laughter in real-time</p>
+          </div>
+        </div>
+
+        <!-- Photo Item 2 -->
+        <div class="polaroid-wrapper rot-2" data-full="images/photo2.jpg" data-caption="Evidence of our questionable dinner attempts. Wouldn't trade it for Michelin stars.">
+          <div class="polaroid-inner">
+            <div class="polaroid-photo-frame">
+              <img src="images/photo2.jpg" alt="Memory 2" onerror="this.src='https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=700&q=80'">
+            </div>
+            <p class="polaroid-note">Questionable Dinners 🍽️</p>
+          </div>
+        </div>
+
+        <!-- Photo Item 3 -->
+        <div class="polaroid-wrapper rot-3" data-full="images/photo3.jpg" data-caption="The quiet moments where no words were needed. Just presence.">
+          <div class="polaroid-inner">
+            <div class="polaroid-photo-frame">
+              <img src="images/photo3.jpg" alt="Memory 3" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=700&q=80'">
+            </div>
+            <p class="polaroid-note">No screens. Just you.</p>
+          </div>
+        </div>
+
+        <!-- Photo Item 4 -->
+        <div class="polaroid-wrapper rot-4" data-full="images/photo4.jpg" data-caption="Where I selfishly fulfilled every desire I had been harbourring since 15/09/2025!">
+          <div class="polaroid-inner">
+            <div class="polaroid-photo-frame">
+              <img src="images/photo4.jpg" alt="Memory 4" onerror="this.src='https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=700&q=80'">
+            </div>
+            <p class="polaroid-note">Late Night Dates</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox" class="lightbox hidden">
+      <span class="lightbox-close" id="lightbox-close">&times;</span>
+      <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="Full view">
+        <p id="lightbox-caption" class="lightbox-text"></p>
+      </div>
+    </div>
+
+    <!-- 6. THE SOUNDTRACK TURNTABLE -->
+    <section class="section-container">
+      <div class="section-header">
+        <span class="section-tag">ANALOG MEMORIES</span>
+        <h2 class="section-title">The Soundtrack of Us</h2>
+        <p class="section-desc">Select a track to cue the needle.</p>
+      </div>
+
+      <div class="turntable-card glass-card">
+        <div class="turntable-deck">
+          <div class="record-platter" id="record-platter">
+            <div class="vinyl-disc" id="vinyl-disc">
+              <div class="vinyl-label">
+                <span class="label-title" id="disc-label">Side A</span>
+              </div>
+            </div>
+          </div>
+          <div class="tonearm-assembly" id="tonearm">
+            <div class="tonearm-pivot"></div>
+            <div class="tonearm-bar"></div>
+            <div class="tonearm-cartridge"></div>
+          </div>
+        </div>
+
+        <div class="turntable-playlist">
+          <div class="track-row" data-song="song1.mp3" data-title="What Makes You Beautiful" data-desc="The way you exist in my eyes.">
+            <div class="track-index">01</div>
+            <div class="track-info">
+              <h4>What Makes You Beautiful</h4>
+              <p>As you are in my eyes, completely unposed.</p>
+            </div>
+            <button class="track-cue-btn">Play</button>
+          </div>
+
+          <div class="track-row" data-song="song2.mp3" data-title="Tum Se Hi" data-desc="The track that anchors every feeling back to you.">
+            <div class="track-index">02</div>
+            <div class="track-info">
+              <h4>Tum Se Hi</h4>
+              <p>From the phone call days to quiet evenings in person.</p>
+            </div>
+            <button class="track-cue-btn">Play</button>
+          </div>
+
+          <div class="track-row" data-song="song3.mp3" data-title="Saathiya" data-desc="When detours became home.">
+            <div class="track-index">03</div>
+            <div class="track-info">
+              <h4>Saathiya</h4>
+              <p>The soundtrack for the detour that changed everything.</p>
+            </div>
+            <button class="track-cue-btn">Play</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. MATHEMATICAL INDUCTION (POETIC PROOF) -->
+    <section class="section-container">
+      <div class="math-proof-card glass-card">
+        <span class="math-tag">THEOREM: PROOF BY INDUCTION</span>
+        <h3 class="math-heading">Let $P(n)$ be the proposition that loving you makes ordinary life extraordinary.</h3>
         
-        <div class="glass-card track-card" data-song="song1.mp3">
-          <svg class="vinyl-icon" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="40" fill="none" stroke="var(--text-light)" stroke-width="1" stroke-dasharray="4 4" />
-            <circle cx="50" cy="50" r="20" fill="none" stroke="var(--accent-magenta)" stroke-width="2" />
-            <circle cx="50" cy="50" r="5" fill="var(--accent-gold)" />
-          </svg>
-          <h4>What Makes You Beautiful</h4>
-          <p>The song that describes you, as you are in my eyes.</p>
-          <div class="play-indicator">▶ Play</div>
+        <div class="math-body">
+          <p><strong>Base Case $P(1)$:</strong> The first day we spent together confirmed that presence exceeds every projection.</p>
+          <p><strong>Inductive Step $P(k) \implies P(k+1)$:</strong> Assume after $k$ days of late-night meals, shared laughter, and quiet care, you remain my home. Every subsequent dawn $(k+1)$ reaffirms this with zero divergence.</p>
+          <p class="math-conclusion"><strong>Conclusion:</strong> $P(n)$ holds for all $n \in \mathbb{N}$ through all upcoming months and years. Q.E.D.</p>
         </div>
-
-        <div class="glass-card track-card" data-song="song2.mp3">
-          <svg class="vinyl-icon" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="40" fill="none" stroke="var(--text-light)" stroke-width="1" stroke-dasharray="4 4" />
-            <circle cx="50" cy="50" r="20" fill="none" stroke="var(--accent-magenta)" stroke-width="2" />
-            <circle cx="50" cy="50" r="5" fill="var(--accent-gold)" />
-          </svg>
-          <h4>Tum Se Hi</h4>
-          <p>The track that instantly reminds me of you, no matter where I am.</p>
-          <div class="play-indicator">▶ Play</div>
-        </div>
-
-        <div class="glass-card track-card" data-song="song3.mp3">
-          <svg class="vinyl-icon" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="40" fill="none" stroke="var(--text-light)" stroke-width="1" stroke-dasharray="4 4" />
-            <circle cx="50" cy="50" r="20" fill="none" stroke="var(--accent-magenta)" stroke-width="2" />
-            <circle cx="50" cy="50" r="5" fill="var(--accent-gold)" />
-          </svg>
-          <h4>Saathiya</h4>
-          <p>The song I want playing when you finally take that detour.</p>
-          <div class="play-indicator">▶ Play</div>
-        </div>
-
       </div>
     </section>
 
-    <!-- SECTION 6: Future Projections -->
-    <section class="projections-section">
-      <h2 class="section-title" style="font-size: 2.4rem;">Future Projections</h2>
-      <p class="section-subtitle">Month 03 is just the baseline...</p>
-      
-      <div class="chart-container">
-        <svg class="chart-svg" viewBox="0 0 500 200" preserveAspectRatio="none">
-          <!-- Area Gradient Definition -->
-          <defs>
-            <linearGradient id="chart-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="rgba(255, 0, 127, 0.6)" />
-              <stop offset="100%" stop-color="rgba(255, 0, 127, 0)" />
-            </linearGradient>
-          </defs>
-          <!-- The sweeping upward curve -->
-          <path class="area-path" d="M 0,200 L 0,180 Q 150,180 250,100 T 500,10 L 500,200 Z" fill="url(#chart-grad)" />
-          <path class="line-path" d="M 0,180 Q 150,180 250,100 T 500,10" fill="none" stroke="var(--accent-magenta)" stroke-width="4" />
-        </svg>
-      </div>
-    </section>
-
-    <!-- SECTION 7: The Constants -->
-    <section class="constants-section">
-      <h2 class="section-title">The Constants in My Equation</h2>
-      <p class="section-subtitle">No matter how the variables change, these things remain true.</p>
-      <div class="glass-grid">
-        <div class="glass-pill">Your laugh</div>
-        <div class="glass-pill">The way you say my name</div>
-        <div class="glass-pill">Our late night talks</div>
-        <div class="glass-pill">Your patience with me</div>
-        <div class="glass-pill">The comfort of your voice</div>
-        <div class="glass-pill">How fast 3 months flew by</div>
-      </div>
-    </section>
-
-    <!-- SECTION 8: The Tactile Finale -->
+    <!-- 8. THE TACTILE FINALE -->
     <section class="finale-section">
       <div id="tactile-box">
-        <p id="hold-prompt">Press and hold</p>
+        <div class="tactile-content">
+          <span class="fingerprint-icon">❦</span>
+          <p id="hold-prompt">Hold to unlock Month 06</p>
+        </div>
         <div id="hold-ring"></div>
       </div>
 
@@ -264,15 +435,18 @@
         <svg class="heartbeat-svg" viewBox="0 0 1000 200">
           <path d="M0 100 L250 100 L280 40 L310 160 L350 60 L380 100 L600 100 L630 80 L660 120 L700 100 L1000 100" />
         </svg>
-        <p id="final-message">Happy 3 Months, Princess.<br><span>Distance was just a graph. We solved it together.</span></p>
-        
-        <div class="glass-card final-note">
-          <p>I know a few months might sound small to the rest of the world, but to me, it’s been 90 days of finding a person I genuinely want in my life every single day.</p>
-          <p>Thank you for making distance feel warmer than some people make presence feel. I don’t think you realize how much of my day quietly revolves around you now... and that's my favorite part.</p>
-          <p style="text-align: right; margin-top: 15px; color: var(--accent-gold);">— Yours.</p>
+
+        <h2 id="final-message">Happy Six Months, My Love.</h2>
+        <p class="final-submessage">180 days of knowing you. 90 days of living beside you. Forever to go.</p>
+
+        <div class="glass-card final-dedication">
+          <p>Three months ago, distance was a 1,400-kilometer question waiting for an answer. Now, after sharing mornings, questionable cooking experiments, midnight ice creams, and the quiet comfort of taking care of you—there are no more unknowns left.</p>
+          <p>You turned what could have been just another year into the most meaningful six months of my life. I love being your person in every ordinary, messy, beautiful moment.</p>
+          <div class="signature">Always yours. ❤️</div>
         </div>
       </div>
     </section>
+
   </main>
 
   <script src="script.js"></script>
